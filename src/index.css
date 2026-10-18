@@ -1,0 +1,124 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-title: 'Pacifico', cursive;
+  --font-dancing: 'Dancing Script', cursive;
+  --font-art: 'Great Vibes', cursive;
+  --font-hand: 'Charm', cursive;
+  --font-vintage: 'Playfair Display', Georgia, serif;
+  --font-times: 'Times New Roman', Times, serif;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  /* Bright pink (~15% deeper than before), darkest toward the top-left corner
+     where the petals come from. */
+  background-color: #f7b3c8;
+  background-image:
+    radial-gradient(85vmax 70vmax at -8% -12%, #c42a5f 0%, #dc4b80 22%, rgb(236 110 155 / 0.55) 42%, rgb(240 160 190 / 0) 66%),
+    linear-gradient(165deg, #f597b6 0%, #f8adc5 40%, #fbc6d6 100%);
+  font-family: 'Times New Roman', Times, serif;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.title-glow {
+  text-shadow:
+    0 2px 0 rgb(255 255 255 / 0.65),
+    0 12px 34px rgb(194 24 91 / 0.28);
+}
+
+/* 2D landscape motion. Grass sways around its base; the whole tree breathes in the
+   breeze (a composited transform, so it's cheap) and shakes before it fades away. */
+.tuft {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: tuft-sway 3s ease-in-out infinite alternate;
+}
+@keyframes tuft-sway {
+  from {
+    transform: rotate(-4deg);
+  }
+  to {
+    transform: rotate(4deg);
+  }
+}
+.tree-breeze {
+  animation: tree-breeze 7s ease-in-out infinite alternate;
+}
+@keyframes tree-breeze {
+  from {
+    transform: rotate(-0.35deg);
+  }
+  to {
+    transform: rotate(0.35deg);
+  }
+}
+.tree-shake {
+  animation: tree-shake 0.16s linear infinite;
+}
+@keyframes tree-shake {
+  0%,
+  100% {
+    transform: rotate(-0.8deg) translateX(-2px);
+  }
+  50% {
+    transform: rotate(0.8deg) translateX(2px);
+  }
+}
+
+/* Small captions that sit over the landscape. */
+.soft-pill {
+  display: inline-block;
+  padding: 0.25rem 0.9rem;
+  border-radius: 9999px;
+  background: rgb(255 255 255 / 0.68);
+  box-shadow: 0 6px 18px rgb(214 51 108 / 0.15);
+}
+
+.paper {
+  background-color: #fffaf4;
+  background-image:
+    radial-gradient(circle at 15% 10%, rgb(255 228 236 / 0.7), transparent 40%),
+    radial-gradient(circle at 90% 95%, rgb(255 214 226 / 0.55), transparent 45%);
+  box-shadow: inset 0 0 0 1px rgb(243 163 187 / 0.35);
+}
+
+.envelope-shadow {
+  filter: drop-shadow(0 26px 34px rgb(190 40 90 / 0.28));
+}
+
+.letter-shadow {
+  box-shadow:
+    inset 0 0 0 1px rgb(243 163 187 / 0.4),
+    0 30px 60px rgb(160 30 80 / 0.28);
+}
+
+.her-name {
+  font-size: 1.3em;
+  line-height: 1;
+  color: #c2185b;
+  padding: 0 0.08em;
+  text-shadow: 0 1px 0 rgb(255 255 255 / 0.8);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
